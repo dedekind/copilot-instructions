@@ -9,8 +9,8 @@ applyTo: "**/*.py"
   Multi-line messages use periods.
 - Prefer module imports, such as `from X import Mod` followed by `Mod.symbol`. Exceptions include
   error classes, `typing` symbols, and established ecosystem patterns such as pandas.
-- Do not rename modules on import. Use multiple import statements without parentheses, packing as
-  many names per line as fit within 100 characters.
+- Do not rename modules on import. Follow Ruff isort formatting: sorted imports, and parenthesized
+  one-name-per-line imports when a line exceeds 100 characters.
 - Use `TypedDict(total=False)` when building a dictionary key by key.
 - Use `frozenset()` or `tuple()` for module constants, not `set()` or `list()`. Prefer immutable
   collections generally.
@@ -45,8 +45,9 @@ applyTo: "**/*.py"
 ## Strings
 
 - Maximize the first line length of a multi-line string, aiming for 95 to 100 characters.
-- Put each continuation line in its own string literal, with its own `f` prefix when it has
-  placeholders. Align it with the opening quote.
+- Put each continuation line in its own string literal, aligned with the opening quote. If the
+  string starts as an f-string, give every continuation literal an `f` prefix, even without
+  placeholders.
 - Outside parentheses, use a backslash for string continuation. Inside parentheses, rely on
   implicit concatenation and do not use a backslash.
 
